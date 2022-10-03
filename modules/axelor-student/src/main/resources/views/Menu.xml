@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+	<menuitem name="menu-contact-book" title="Axelor Book" />
+
+	<menuitem name="menu-contact-students" title="All Students"
+		parent="menu-contact-book" action="contact.all" />
+
+	<action-view model="com.axelor.student.db.Contact"
+		name="contact.all" title="Contacts">
+		<view type="grid" name="contact-grid" />
+		<view type="form" name="contact-form" />
+	</action-view>
+
+	<menuitem name="menu-contact-config" title="Configurations"
+		parent="menu-contact-book" />
+	<menuitem name="menu-contact-config-address" title="Address"
+		parent="menu-contact-config" />
+	<menuitem name="menu-contact-config-city" title="City"
+		parent="menu-contact-config-address" action="configure.city.all" />
+	<menuitem name="menu-contact-config-state" title="State"
+		parent="menu-contact-config-address" action="configure.state.all" />
+	<menuitem name="menu-contact-config-country" title="Country"
+		parent="menu-contact-config-address" action="configure.country.all" />
+
+	<action-view model="com.axelor.student.db.City"
+		name="configure.city.all" title="Cities">
+		<view type="grid" name="city-grid" />
+		<view type="form" name="city-form" />
+	</action-view>
+	<action-view model="com.axelor.student.db.State"
+		name="configure.state.all" title="States">
+		<view type="grid" name="state-grid" />
+		<view type="form" name="state-form" />
+	</action-view>
+
+	<action-view model="com.axelor.student.db.Country"
+		name="configure.country.all" title="Countries">
+		<view type="grid" name="country-grid" />
+		<view type="form" name="country-form" />
+	</action-view>
+
+
+	<menuitem name="menu-contact-config-education"
+		title="Education" parent="menu-contact-config" />
+	
+	<menuitem name="menu-contact-config-technology"
+		title="Technologys" parent="menu-contact-config-education"
+		action="configure.technology.all" />
+
+	<action-view model="com.axelor.student.db.Technology"
+		name="configure.technology.all" title="Technology">
+		<view type="grid" name="technology-grid" />
+		<view type="form" name="technology-form" />
+	</action-view>
+
+
+</object-views>

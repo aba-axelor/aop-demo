@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.4.xsd">
+
+  <module name="student" package="com.axelor.student.db"/>
+  
+  <entity name="Contact">
+  //name should be given as per "model.xml file" (i.e Contact.xml file here) bcz it creates pojo class as per name
+  
+  	<string name="firstName"/> 	
+  	<string name="lastName"/>  	
+  	<date name="dateOfBirth"></date>
+  	<string name="email"  required="true" unique="true" max="100"/>
+  	<string name="phoneNo" max="20" massUpdate="true"/>
+  	<one-to-many name="addresses" ref="Address" mappedBy="contact" />
+  	<one-to-many ref="Qualification" name="qualification" mappedBy="contact"/>
+  </entity>
+  
+  
+</domain-models>

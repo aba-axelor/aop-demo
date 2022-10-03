@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+	<form model="com.axelor.student.db.Address" title="Address"
+		name="address-form">
+		<panel icon-background="red">
+			<field name="street" required="true" />
+			<field name="area" required="true" />
+			<field name="zip" canNew="true" />
+			<field name="city"/>
+			<field name="state"/>
+			<field name="country"/>
+		</panel>
+	</form>
+
+</object-views>

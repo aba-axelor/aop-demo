@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+	<grid name="contact-grid" title="Contact"
+		model="com.axelor.student.db.Contact">
+		<field name="firstName" />
+		<field name="lastName" />
+		<field name="dateOfBirth" />
+		<field name="email" />
+		<field name="phone" />
+	</grid>
+
+	<!-- title is name which is shown in tab when we open grid or form view -->
+
+	<form name="contact-form" title="Contact"
+		model="com.axelor.student.db.Contact" width="large">
+
+
+		<panel name="studentPanel" title="Student">
+			<field name="FullName" readonly="false">
+				<editor>
+					<field name="firstName" colSpan="4" />
+					<field name="lastName" colSpan="5" />
+				</editor>
+			</field>
+
+			<field name="dateOfBirth" />
+
+			<field name="email">
+				<viewer><![CDATA[ 
+	        <a href="mailto:{{record.email}}">{{record.email}}</a>
+	        ]]></viewer>
+			</field>
+
+			<field name="phone">
+				<viewer><![CDATA[
+	        <a href=title of the panel"tel:{{record.phone}}">{{record.phone}}</a>
+	        ]]></viewer>
+			</field>
+
+		</panel>
+
+
+		<panel-related name="qualificationsPanel" field="qualification" />
+
+		<panel-related field="addresses" />
+
+	</form>
+
+
+
+</object-views>
+
+
+
