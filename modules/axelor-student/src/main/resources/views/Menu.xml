@@ -8,15 +8,15 @@
 
 	<menuitem name="menu-contact-students" title="All Students"
 		parent="menu-contact-book" action="contact.all" />
+		
+	<menuitem name="menu-contact-tree" title="Contact Tree"
+		parent="menu-contact-book" action="contact.tree.all" />
+	<action-view name="contact.tree.all" title="Contact Tree" model="com.axelor.student.db.Country">
+		<view type="tree" name="contact-tree"/>
+	</action-view>	
 
-	<action-view model="com.axelor.student.db.Contact"
-		name="contact.all" title="Contacts">
-		<view type="grid" name="contact-grid" />
-		<view type="form" name="contact-form" />
-	</action-view>
-
-	<menuitem name="menu-contact-config" title="Configurations"
-		parent="menu-contact-book" />
+	<menuitem title="Configurations" name="menu-contact-config"/>
+	
 	<menuitem name="menu-contact-config-address" title="Address"
 		parent="menu-contact-config" />
 	<menuitem name="menu-contact-config-city" title="City"
@@ -26,11 +26,27 @@
 	<menuitem name="menu-contact-config-country" title="Country"
 		parent="menu-contact-config-address" action="configure.country.all" />
 
+	<menuitem name="menu-contact-config-education"
+		title="Education" parent="menu-contact-config" />
+
+	<menuitem name="menu-contact-config-technology"
+		title="Technologys" parent="menu-contact-config-education"
+		action="configure.technology.all" />
+		
+		
+
+	<action-view model="com.axelor.student.db.Contact"
+		name="contact.all" title="Contacts">
+		<view type="grid" name="contact-grid" />
+		<view type="form" name="contact-form" />
+	</action-view>
+
 	<action-view model="com.axelor.student.db.City"
 		name="configure.city.all" title="Cities">
 		<view type="grid" name="city-grid" />
 		<view type="form" name="city-form" />
 	</action-view>
+
 	<action-view model="com.axelor.student.db.State"
 		name="configure.state.all" title="States">
 		<view type="grid" name="state-grid" />
@@ -44,18 +60,10 @@
 	</action-view>
 
 
-	<menuitem name="menu-contact-config-education"
-		title="Education" parent="menu-contact-config" />
-	
-	<menuitem name="menu-contact-config-technology"
-		title="Technologys" parent="menu-contact-config-education"
-		action="configure.technology.all" />
-
 	<action-view model="com.axelor.student.db.Technology"
 		name="configure.technology.all" title="Technology">
 		<view type="grid" name="technology-grid" />
 		<view type="form" name="technology-form" />
 	</action-view>
-
 
 </object-views>

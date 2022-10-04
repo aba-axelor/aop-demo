@@ -5,7 +5,7 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 	<grid name="contact-grid" title="Contact"
-		model="com.axelor.student.db.Contact">
+		model="com.axelor.student.db.Contact" >
 		<field name="firstName" />
 		<field name="lastName" />
 		<field name="dateOfBirth" />
@@ -19,12 +19,13 @@
 		model="com.axelor.student.db.Contact" width="large">
 
 
-		<panel name="studentPanel" title="Student">
+		<panel name="studentPanel" title="Student" showFrame="true" hidden="false" >
 			<field name="FullName" readonly="false">
 				<editor>
 					<field name="firstName" colSpan="4" />
 					<field name="lastName" colSpan="5" />
 				</editor>
+
 			</field>
 
 			<field name="dateOfBirth" />
@@ -44,11 +45,22 @@
 		</panel>
 
 
-		<panel-related name="qualificationsPanel" field="qualification" />
+		<panel-related name="qualificationsPanel"
+			field="qualification" />
 
 		<panel-related field="addresses" />
 
 	</form>
+
+	<form model="com.axelor.student.db.Department" title="Department"
+		name="department-form">
+		<panel>
+			<field name="code" />
+			<field name="name" />
+		</panel>
+	</form>
+	
+
 
 
 

@@ -4,15 +4,37 @@
 	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
+
+	<tree name="contact-tree" title="Address Title">
+		<column name="code" />
+		<column name="name" />
+
+		<node model="com.axelor.student.db.Country">
+			<field name="code" />
+			<field name="name" />
+		</node>
+
+		<node model="com.axelor.student.db.State" parent="country">
+			<field name="code" />
+			<field name="name" />
+		</node>
+
+		<node model="com.axelor.student.db.City" parent="state">
+			<field name="code" />
+			<field name="name" />
+		</node>
+
+	</tree>
+
 	<form model="com.axelor.student.db.Address" title="Address"
 		name="address-form">
 		<panel icon-background="red">
 			<field name="street" required="true" />
 			<field name="area" required="true" />
 			<field name="zip" canNew="true" />
-			<field name="city"/>
-			<field name="state"/>
-			<field name="country"/>
+			<field name="city" />
+			<field name="state" />
+			<field name="country" />
 		</panel>
 	</form>
 
