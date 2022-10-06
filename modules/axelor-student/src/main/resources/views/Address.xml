@@ -5,7 +5,7 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 
-	<tree name="contact-tree" title="Address Title">
+	<tree name="address-tree" title="Address Tree">
 		<column name="code" />
 		<column name="name" />
 
@@ -25,6 +25,8 @@
 		</node>
 
 	</tree>
+	
+	
 
 	<form model="com.axelor.student.db.Address" title="Address"
 		name="address-form">

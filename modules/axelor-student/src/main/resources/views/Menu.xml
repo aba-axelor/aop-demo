@@ -9,11 +9,23 @@
 	<menuitem name="menu-contact-students" title="All Students"
 		parent="menu-contact-book" action="contact.all" />
 		
-	<menuitem name="menu-contact-tree" title="Contact Tree"
-		parent="menu-contact-book" action="contact.tree.all" />
-	<action-view name="contact.tree.all" title="Contact Tree" model="com.axelor.student.db.Country">
-		<view type="tree" name="contact-tree"/>
+	<menuitem name="menu-address-tree" title="Address Tree"
+		parent="menu-contact-book" action="address.tree.all" />
+	<action-view name="address.tree.all" title="Address Tree" model="com.axelor.student.db.Country">
+		<view type="tree" name="address-tree"/>
 	</action-view>	
+	
+	<menuitem title="Contact Card" name="menu-contact-card" parent="menu-contact-book" action="contact.card.all" />
+	<action-view name="contact.card.all" title="Contact Card" model="com.axelor.student.db.Contact">
+		<view type="cards" name = "contact-card"/>
+		<view type="form" name="contact-form"/>
+	</action-view>
+	
+	<menuitem title="Project Kanban" name="project-kanban" parent="menu-contact-book" action="project.all"/>
+	<action-view name="project.all" title="Project" model="com.axelor.student.db.Project">
+		<view type="kanban" name = "project-kanban"/>
+		<view type="form" name="project-form"/>
+	</action-view>
 
 	<menuitem title="Configurations" name="menu-contact-config"/>
 	

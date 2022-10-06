@@ -16,12 +16,14 @@
 	<form name="qualification-form" title="Qualification"
 		model="com.axelor.student.db.Qualification">
 	<panel>
-		<field name="hsc" />
+		<field name="hsc"/>
 		<field name="hscGpa" />
 		<field name="ssc" />
 		<field name="sscGpa" />
 		<field name="technology"/>
 	</panel>
 	</form>
+	
+	
 
 </object-views>

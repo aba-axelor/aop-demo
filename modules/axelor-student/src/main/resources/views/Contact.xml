@@ -6,8 +6,7 @@
 
 	<grid name="contact-grid" title="Contact"
 		model="com.axelor.student.db.Contact" >
-		<field name="firstName" />
-		<field name="lastName" />
+		<field name="fullName" />
 		<field name="dateOfBirth" />
 		<field name="email" />
 		<field name="phone" />
@@ -16,13 +15,13 @@
 	<!-- title is name which is shown in tab when we open grid or form view -->
 
 	<form name="contact-form" title="Contact"
-		model="com.axelor.student.db.Contact" width="large">
+		model="com.axelor.student.db.Contact" width="large" onSave="test-method" onNew="dob.show">
 
 
 		<panel name="studentPanel" title="Student" showFrame="true" hidden="false" >
 			<field name="FullName" readonly="false">
 				<editor>
-					<field name="firstName" colSpan="4" />
+					<field name="firstName" colSpan="4" onChange="dob.show"/>
 					<field name="lastName" colSpan="5" />
 				</editor>
 
@@ -36,17 +35,16 @@
 	        ]]></viewer>
 			</field>
 
-			<field name="phone">
+			<field name="phone" >
 				<viewer><![CDATA[
-	        <a href=title of the panel"tel:{{record.phone}}">{{record.phone}}</a>
-	        ]]></viewer>
+	        		<a href=title of the panel"tel:{{record.phone}}">{{record.phone}}</a>
+	        	]]></viewer>
 			</field>
 
 		</panel>
 
 
-		<panel-related name="qualificationsPanel"
-			field="qualification" />
+		<panel-related name="qualificationsPanel" field="qualification"/>
 
 		<panel-related field="addresses" />
 
@@ -59,9 +57,36 @@
 			<field name="name" />
 		</panel>
 	</form>
-	
 
+	<cards name="contact-card" model="com.axelor.student.db.Contact"
+		title="Contact">
+		<field name="firstName" />
+		<field name="lastName" />
+		<field name="dateOfBirth" />
+		<field name="email" />
+		<field name="phone" />
+		<field name="hasImage" />
 
+		<template>
+			<![CDATA[
+			  <div class="span4 card-image">
+			    <img ng-if="hasImage" ng-src="{{$image(null, 'image')}}">
+			    <img ng-if="!hasImage" src="img/user.png">
+			    <strong>{{firstName}}</strong>
+			  </div>
+			  
+			  <button type="button" class="btn" ui-action-click="address.tree.all" title="AddressButton">Address</>
+			]]>
+	    </template>
+	</cards>
+
+<action-attrs name="dob.show">
+  <attribute for="dateOfBirth" name="readonly" expr="firstName == null" />  
+</action-attrs>
+
+<action-method name="test-method">
+	<call class="com.axelor.app.web.ContactController" method="testMethod"/>
+</action-method>
 
 
 </object-views>
