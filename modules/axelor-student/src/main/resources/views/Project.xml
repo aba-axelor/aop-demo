@@ -5,7 +5,9 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 	<kanban name="project-kanban" title="Project Tasks"
-		model="com.axelor.student.db.Project" columnBy="startDate" sequenceBy="startDate">
+		model="com.axelor.student.db.Project" columnBy="startDate"
+		sequenceBy="startDate" >
+	
 		<field name="name" />
 		<field name="progress" />
 		<field name="startDate" />
@@ -16,23 +18,24 @@
 		<hilite color="info" if="progress &gt;= 50" />
 		<hilite color="warning" if="progress &gt; 0" />
 		<template><![CDATA[
-<!--   <h4>{{name}}</h4> -->
-  <img ng-if="contact" src="{{$image('user', 'image')}}">
-<!--   <div class="card-body">{{notes}}</div> -->
-<!--   <div class="card-footer"> -->
-<!--     <i class='fa fa-clock-o'></i> <span>{{startDate|date:'yyyy-MM-dd HH:mm:ss'}}</span> -->
-  </div>
+   			<h4>{{name}}</h4> 
+
   ]]></template>
 	</kanban>
-	
-	<form model="com.axelor.student.db.Project" title="Project" name="project-form">
+
+	<form model="com.axelor.student.db.Project" title="Project"
+		name="project-form" onNew="pjt.show">
 		<panel>
 			<field name="name" />
 			<field name="progess" />
 			<field name="startDate" />
 			<field name="endDate" />
-			<field name="contact" />
+			<field name="contact" onChange="pjt.show" />
 		</panel>
 	</form>
+
+	<action-attrs name="pjt.show">
+		<attribute name="readonly" for="name" expr="contact == null" />
+	</action-attrs>
 
 </object-views>

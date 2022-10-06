@@ -5,77 +5,85 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 	<menuitem name="menu-contact-book" title="Axelor Book" />
-
 	<menuitem name="menu-contact-students" title="All Students"
 		parent="menu-contact-book" action="contact.all" />
-		
-	<menuitem name="menu-address-tree" title="Address Tree"
-		parent="menu-contact-book" action="address.tree.all" />
-	<action-view name="address.tree.all" title="Address Tree" model="com.axelor.student.db.Country">
-		<view type="tree" name="address-tree"/>
-	</action-view>	
-	
-	<menuitem title="Contact Card" name="menu-contact-card" parent="menu-contact-book" action="contact.card.all" />
-	<action-view name="contact.card.all" title="Contact Card" model="com.axelor.student.db.Contact">
-		<view type="cards" name = "contact-card"/>
-		<view type="form" name="contact-form"/>
-	</action-view>
-	
-	<menuitem title="Project Kanban" name="project-kanban" parent="menu-contact-book" action="project.all"/>
-	<action-view name="project.all" title="Project" model="com.axelor.student.db.Project">
-		<view type="kanban" name = "project-kanban"/>
-		<view type="form" name="project-form"/>
-	</action-view>
-
-	<menuitem title="Configurations" name="menu-contact-config"/>
-	
-	<menuitem name="menu-contact-config-address" title="Address"
-		parent="menu-contact-config" />
-	<menuitem name="menu-contact-config-city" title="City"
-		parent="menu-contact-config-address" action="configure.city.all" />
-	<menuitem name="menu-contact-config-state" title="State"
-		parent="menu-contact-config-address" action="configure.state.all" />
-	<menuitem name="menu-contact-config-country" title="Country"
-		parent="menu-contact-config-address" action="configure.country.all" />
-
-	<menuitem name="menu-contact-config-education"
-		title="Education" parent="menu-contact-config" />
-
-	<menuitem name="menu-contact-config-technology"
-		title="Technologys" parent="menu-contact-config-education"
-		action="configure.technology.all" />
-		
-		
-
 	<action-view model="com.axelor.student.db.Contact"
 		name="contact.all" title="Contacts">
 		<view type="grid" name="contact-grid" />
 		<view type="form" name="contact-form" />
 	</action-view>
 
+	<menuitem name="menu-address-tree" title="Address Tree"
+		parent="menu-contact-book" action="address.tree.all" />
+	<action-view name="address.tree.all" title="Address Tree"
+		model="com.axelor.student.db.Country">
+		<view type="tree" name="address-tree" />
+	</action-view>
+
+	<menuitem title="Contact Card" name="menu-contact-card"
+		parent="menu-contact-book" action="contact.card.all" />
+	<action-view name="contact.card.all" title="Contact Card"
+		model="com.axelor.student.db.Contact">
+		<view type="cards" name="contact-card" />
+		<view type="form" name="contact-form" />
+	</action-view>
+
+	<menuitem title="Project Kanban" name="project-kanban"
+		parent="menu-contact-book" action="project.all" />
+	<action-view name="project.all" title="Project"
+		model="com.axelor.student.db.Project">
+		<view type="kanban" name="project-kanban" />
+		<view type="form" name="project-form" />
+	</action-view>
+
+	<menuitem name="menu-contact-config" title="Configurations" />
+	<menuitem name="menu-contact-config-address" title="Address"
+		parent="menu-contact-config" />
+		
+	<menuitem title="City Details"
+		name="menu-contact-config-city-details"
+		parent="menu-contact-config-address" action="city.details.all" />
+	<action-view name="city.details.all" model="com.axelor.student.db.City"
+		title="City Details">
+		<view name="city-grid" type="grid" />
+		<view name="city-form" type="form" />
+		<view-param name="details-view" value="true" />
+	</action-view>
+
+	<menuitem name="menu-contact-config-city" title="City"
+		parent="menu-contact-config-address" action="configure.city.all" />
 	<action-view model="com.axelor.student.db.City"
 		name="configure.city.all" title="Cities">
 		<view type="grid" name="city-grid" />
 		<view type="form" name="city-form" />
 	</action-view>
-
+		
+	<menuitem name="menu-contact-config-state" title="State"
+		parent="menu-contact-config-address" action="configure.state.all" />
 	<action-view model="com.axelor.student.db.State"
 		name="configure.state.all" title="States">
 		<view type="grid" name="state-grid" />
 		<view type="form" name="state-form" />
 	</action-view>
-
+	
+	<menuitem name="menu-contact-config-country" title="Country"
+		parent="menu-contact-config-address" action="configure.country.all" />
 	<action-view model="com.axelor.student.db.Country"
 		name="configure.country.all" title="Countries">
 		<view type="grid" name="country-grid" />
 		<view type="form" name="country-form" />
 	</action-view>
 
-
+	<menuitem name="menu-contact-config-education"
+		title="Education" parent="menu-contact-config" />
+	<menuitem name="menu-contact-config-technology"
+		title="Technologys" parent="menu-contact-config-education"
+		action="configure.technology.all" />
 	<action-view model="com.axelor.student.db.Technology"
 		name="configure.technology.all" title="Technology">
 		<view type="grid" name="technology-grid" />
 		<view type="form" name="technology-form" />
 	</action-view>
+
 
 </object-views>
