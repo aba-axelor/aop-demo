@@ -9,8 +9,8 @@
     <entity name="Project">
    	    <string name="name"/>
    		<string name="progress" />
-   		<string name="startDate"/>
-   		<string name="endDate"/>
+		<date name="startDate"></date>
+		<date name="endDate"></date>
    		<many-to-one ref="Contact" name="contact" required="true"/>
 		
   </entity>

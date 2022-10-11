@@ -37,6 +37,5 @@
 			
 		<one-to-many ref="Project" name="projects" mappedBy="contact"/>
 	</entity>
-
-
+	 
 </domain-models>
