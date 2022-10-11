@@ -14,15 +14,20 @@
 	</grid>
 
 	<form name="qualification-form" title="Qualification"
-		model="com.axelor.student.db.Qualification">
+		model="com.axelor.student.db.Qualification" onNew="gpa.show">
 	<panel>
-		<field name="hsc"/>
+		<field name="hsc" onChange="gpa.show"/>
 		<field name="hscGpa" />
-		<field name="ssc" />
+		<field name="ssc" onChange="gpa.show"/>
 		<field name="sscGpa" />
 		<field name="technology"/>
 	</panel>
 	</form>
+	
+	<action-attrs name="gpa.show">
+		<attribute name="readonly" for="hscGpa" expr="!hsc"/>
+		<attribute name="readonly" for="sscGpa" expr="!ssc"/>
+	</action-attrs>
 	
 	
 

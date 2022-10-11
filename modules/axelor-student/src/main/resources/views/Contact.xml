@@ -5,7 +5,7 @@
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
 	<grid name="contact-grid" title="Contact"
-		model="com.axelor.student.db.Contact" >
+		model="com.axelor.student.db.Contact">
 		<field name="fullName" />
 		<field name="dateOfBirth" />
 		<field name="email" />
@@ -15,13 +15,15 @@
 	<!-- title is name which is shown in tab when we open grid or form view -->
 
 	<form name="contact-form" title="Contact"
-		model="com.axelor.student.db.Contact" width="large" onSave="test-method" onNew="dob.show">
+		model="com.axelor.student.db.Contact" width="large"
+		onNew="dob.show,phy.show,test">
 
 
-		<panel name="studentPanel" title="Student" showFrame="true" hidden="false" >
+		<panel name="studentPanel" title="Student" showFrame="true"
+			hidden="false">
 			<field name="FullName" readonly="false">
 				<editor>
-					<field name="firstName" colSpan="4" onChange="dob.show"/>
+					<field name="firstName" colSpan="4" onChange="dob.show,test" />
 					<field name="lastName" colSpan="5" />
 				</editor>
 
@@ -29,24 +31,35 @@
 
 			<field name="dateOfBirth" />
 
-			<field name="email">
-				<viewer><![CDATA[ 
+			<panel showFrame="true">
+				<field name="physicallyChallenged"
+					title="Pysically Challenged" onChange="phy.show" />
+				<field name="scolarShip" title="Scolar-Ship" />
+			</panel>
+
+			<panel>
+
+				<field name="email">
+					<viewer><![CDATA[ 
 	        <a href="mailto:{{record.email}}">{{record.email}}</a>
 	        ]]></viewer>
-			</field>
+				</field>
 
-			<field name="phone" >
-				<viewer><![CDATA[
+				<field name="phone">
+					<viewer><![CDATA[
 	        		<a href=title of the panel"tel:{{record.phone}}">{{record.phone}}</a>
 	        	]]></viewer>
-			</field>
+				</field>
+
+			</panel>
 
 		</panel>
 
 
-		<panel-related name="qualificationsPanel" field="qualification"/>
+		<panel-related name="qualificationsPanel"
+			field="qualifications" />
 
-		<panel-related field="addresses" />
+		<panel-related name="addrressPanel" field="addresses" />
 
 	</form>
 
@@ -80,15 +93,19 @@
 	    </template>
 	</cards>
 
-<action-attrs name="dob.show">
-  <attribute for="dateOfBirth" name="readonly" expr="firstName == null" />  
-</action-attrs>
+	<action-attrs name="dob.show">
+		<attribute for="dateOfBirth" name="readonly"
+			expr="firstName == null" />
+	</action-attrs>
 
-<action-method name="test-method">
-	<call class="com.axelor.app.web.ContactController" method="testMethod"/>
-</action-method>
-
-
+	<action-attrs name="phy.show">
+		<attribute name="readonly" for="scolarShip"
+			expr="!physicallyChallenged" />
+	</action-attrs>
+	
+	<action-record name="test" model="com.axelor.student.db.Contact">
+		<field name="lastName" expr="eval: __user__.name" if="firstName == 'hello'"/>
+	</action-record>
 </object-views>
 
 

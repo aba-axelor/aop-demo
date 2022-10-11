@@ -26,6 +26,12 @@
 
 		<date name="dateOfBirth"></date>
 		
+		<boolean name="physicallyChallenged"></boolean>
+		
+		<string name="scolarShip"></string>
+		
+		<string name="disabilities"></string>
+		
 		<string name="email" required="true" unique="true" max="100" />
 		
 		<string name="phoneNo" max="20" massUpdate="true" />
