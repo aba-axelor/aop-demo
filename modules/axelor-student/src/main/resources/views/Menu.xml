@@ -69,7 +69,7 @@
 	<menuitem name="menu-contact-config-country" title="Country"
 		parent="menu-contact-config-address" action="configure.country.all" />
 	<action-view model="com.axelor.student.db.Country"
-		name="configure.country.all" title="Countries">
+		name="configure.country.all" title="Countries" >
 		<view type="grid" name="country-grid" />
 		<view type="form" name="country-form" />
 	</action-view>
@@ -84,6 +84,17 @@
 		<view type="grid" name="technology-grid" />
 		<view type="form" name="technology-form" />
 	</action-view>
+	
+	<menuitem title="Dashboard " name="dashboard-view" action="overview.all"/>
+	<action-view name="overview.all" title="overview" >
+		<view type="dashboard" name="overview"/>
+	</action-view>
 
+
+	<menuitem title="Calculator" name="menu-calc" icon="fa-solid fa-calculator-simple" action="calc.all"/>
+	<action-view name="calc.all" title="calculator" model="com.axelor.calc.db.Calculator">
+		<view type="form" name="calc-form"/>
+		<view type="grid" name="calc-grid"/>
+	</action-view>
 
 </object-views>

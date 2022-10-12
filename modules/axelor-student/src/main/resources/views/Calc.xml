@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+	<grid model="com.axelor.calc.db.Calculator" title="Calculator"
+		name="calc-grid">
+		<field name="inputOne" />
+		<field name="inputTwo" />
+		<field name="result" readonly="true"/>
+	</grid>
+
+	<form model="com.axelor.calc.db.Calculator" title="Calculator"
+		name="calc-form">
+		<panel name="Numbers">
+			<field name="inputOne" />
+			<field name="inputTwo" />
+			<field name="result" readonly="true"/>
+		</panel>
+
+		<panel name="Operations">
+			<button name="btnAdd" icon="fa-solid fa-plus" title="Add"
+				onClick="action.method.calc.opt" />
+			<button name="btnSubtract" icon="fa-solid fa-minus"
+				title="Subtract" onClick="action.method.calc.opt" />
+			<button name="btnMultiply" icon="fa-sharp fa-solid fa-xmark"
+				title="Product" onClick="action.method.calc.opt" />
+			<button name="btnDivide" icon="fa-regular fa-divide"
+				title="Division" onClick="action.method.calc.opt" />
+		</panel>
+	</form>	
+	<action-method name="action.method.calc.opt">
+		<call class="com.axelor.apps.web.CalcController" method="calculate"/>
+	</action-method>
+	
+
+
+</object-views>

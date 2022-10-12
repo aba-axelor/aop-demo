@@ -23,7 +23,9 @@
 			hidden="false">
 			<field name="FullName" readonly="false">
 				<editor>
-					<field name="firstName" colSpan="4" onChange="dob.show,test" />
+				
+<!-- 				dob.show,test, -->
+					<field name="firstName" colSpan="4" onChange="action.method.test,dob.show" /> 
 					<field name="lastName" colSpan="5" />
 				</editor>
 
@@ -92,7 +94,14 @@
 			]]>
 	    </template>
 	</cards>
-
+	
+	<dashboard name="overview" title="Overview">
+		<dashlet action="grid:contact-grid" />
+		<dashlet action="grid:qualification-grid"/>
+		<dashlet action="grid:state-grid" />
+		<dashlet action="grid:technology-grid" />
+	</dashboard>
+	
 	<action-attrs name="dob.show">
 		<attribute for="dateOfBirth" name="readonly"
 			expr="firstName == null" />
@@ -103,9 +112,13 @@
 			expr="!physicallyChallenged" />
 	</action-attrs>
 	
-	<action-record name="test" model="com.axelor.student.db.Contact">
+	<action-record name="test" model="com.axelor.student.db.Contact" >
 		<field name="lastName" expr="eval: __user__.name" if="firstName == 'hello'"/>
 	</action-record>
+	
+	<action-method name="action.method.test">
+		<call class="com.axelor.apps.web.Test" method="testMethod"/>
+	</action-method>
 </object-views>
 
 
