@@ -25,7 +25,7 @@
 				<editor>
 				
 <!-- 				dob.show,test, -->
-					<field name="firstName" colSpan="4" onChange="action.method.test,dob.show" /> 
+					<field name="firstName" colSpan="4" onChange="dob.show" /> 
 					<field name="lastName" colSpan="5" />
 				</editor>
 
@@ -102,6 +102,7 @@
 		<dashlet action="grid:technology-grid" />
 	</dashboard>
 	
+	
 	<action-attrs name="dob.show">
 		<attribute for="dateOfBirth" name="readonly"
 			expr="firstName == null" />
@@ -116,9 +117,7 @@
 		<field name="lastName" expr="eval: __user__.name" if="firstName == 'hello'"/>
 	</action-record>
 	
-	<action-method name="action.method.test">
-		<call class="com.axelor.apps.web.Test" method="testMethod"/>
-	</action-method>
+
 </object-views>
 
 

@@ -8,8 +8,6 @@
 	<module name="student" package="com.axelor.student.db" />
 
 	<entity name="Contact">
-		//name should be given as per "model.xml file" (i.e Contact.xml file
-		here) bcz it creates pojo class as per name
 
 		<string name="firstName" />
 		<string name="lastName" />
@@ -40,8 +38,8 @@
 			
 		<one-to-many ref="Qualification" name="qualifications"
 			mappedBy="contact" />
-			
-		<one-to-many ref="Project" name="projects" mappedBy="contact"/>
+		
+		<one-to-many ref="ProjectTask" name="tasks" mappedBy="contact"/>
 	</entity>
 	 
 </domain-models>

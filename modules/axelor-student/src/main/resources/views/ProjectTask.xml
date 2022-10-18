@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+
+	<selection name="project.task.state.selection">
+		<option value="todo">To-Do</option>
+		<option value="progress">In-Progress</option>
+		<option value="complete">Completed</option>
+	</selection>
+
+	<grid model="com.axelor.student.db.ProjectTask"
+		title="Project Task" name="projectTask-grid">
+		<field name="name" />
+		<field name="createDate" />
+		<field name="startDate" />
+		<field name="endDate" />
+		<field name="state" />
+
+	</grid>
+
+	<form model="com.axelor.student.db.ProjectTask"
+		title="Project Task" name="projectTask-form">
+		<panel>
+			<field name="name" />
+			<field name="priority" />
+			<field name="createDate" />
+			<field name="deadLineDate" />
+			<field name="startDate" />
+			<field name="endDate" />
+			<field name="project" />
+			<field name="contact" widget="TagSelect" />
+		</panel>
+
+		<panel-tabs>
+			<panel title="Notes">
+				<field name="notes" showTitle="false" colSpan="12" />
+			</panel>
+
+			<panel title="Linked Project Tasks" colSpan="12">
+				<field name="finishToStartTaskSet" widget="TagSelect" />
+				<field name="startToStartTaskSet" widget="TagSelect" />
+				<field name="finishToFinishTaskSet" widget="TagSelect" />
+				<field name="startToFinishTaskSet" widget="tagSelect" />
+			</panel>
+		</panel-tabs>
+
+	</form>
+
+	<kanban name="project-kanban" title="Project Tasks"
+		model="com.axelor.student.db.ProjectTask" columnBy="state"
+		sequenceBy="priority">
+		<field name="name" />
+		<field name="state" />
+		<field name="startDate" />
+		<field name="endDate" />
+		<field name="progress" />
+		<hilite color="danger" if="progress == 0" />
+		<hilite color="success" if="progress == 100" />
+		<hilite color="info" if="progress &gt;= 50" />
+		<hilite color="warning" if="progress &gt; 0" />
+		<template><![CDATA[ 
+			<h4>{{name}}</h4>
+ 		   <div class="card-footer"> 
+  		   <i class='fa fa-clock-o'></i>
+  		  <span>{{startDate|date:'yyyy-MM-dd HH:mm:ss'}}</span> 
+ 		</div> ]]></template>
+	</kanban>
+	
+	<calendar name="projectTask-calendar"
+		model="com.axelor.student.db.ProjectTask" eventStart="startDate"
+		eventStop="endDate" eventLength="1" title="Calendar" colorBy="contact">
+		<field name="name" />
+	</calendar>
+
+	<gantt model="com.axelor.student.db.ProjectTask"
+	title="Task Planning" name="project-task-gantt"
+	taskStart="plannedStartDate"
+	taskDuration="plannedDuration" taskParent="project" taskProgress="progress"
+	x-finish-to-start="finishToStartTaskSet"
+	x-start-to-start="startToStartTaskSet"
+	x-finish-to-finish="finishToFinishTaskSet"
+	x-start-to-finish="startToFinishTaskSet">
+	<field name="name" />
+	<field name="contact" />
+	</gantt>
+
+
+</object-views>

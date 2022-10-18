@@ -6,13 +6,15 @@
 
   <module name="student" package="com.axelor.student.db" />
   
-    <entity name="Project">
-   	    <string name="name"/>
-   		<string name="progress" />
-		<date name="startDate"></date>
-		<date name="endDate"></date>
-   		<many-to-one ref="Contact" name="contact" required="true"/>
+    <entity name="Project" cachable="true">
+   	    <string name="name" unique="true" required="true"/>
+   	    <string name="description" translatable="true" multiline="true"/>
+   	    <string name="notes" multiline="true" />
+   	    <integer name="priority" />
+		<one-to-many ref="ProjectTask" name="tasks" mappedBy="project"/>
+   		<many-to-many ref="Contact" name="contact"/>
 		
   </entity>
   
 </domain-models>
+

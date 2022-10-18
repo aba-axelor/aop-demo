@@ -4,38 +4,47 @@
 	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
 
-	<kanban name="project-kanban" title="Project Tasks"
-		model="com.axelor.student.db.Project" columnBy="startDate"
-		sequenceBy="startDate" >
-	
+	<grid name="project-grid" title="Projects"
+		model="com.axelor.student.db.Project">
 		<field name="name" />
-		<field name="progress" />
-		<field name="startDate" />
-		<field name="endDate" />
-		<field name="contact" />
-		<hilite color="danger" if="progress == 0" />
-		<hilite color="success" if="progress == 100" />
-		<hilite color="info" if="progress &gt;= 50" />
-		<hilite color="warning" if="progress &gt; 0" />
-		<template><![CDATA[
-   			<h4>{{name}}</h4> 
+		<field name="priority" />
+	</grid>
 
-  ]]></template>
-	</kanban>
 
 	<form model="com.axelor.student.db.Project" title="Project"
-		name="project-form" onNew="pjt.show">
-		<panel>
+		name="project-form" >
+		
+		<panel title=" Project-Overview">
 			<field name="name" />
-			<field name="progess" />
-			<field name="startDate" />
-			<field name="endDate" />
-			<field name="contact" onChange="pjt.show" />
+			<field name= "priority" />
+			<field name="contact" widget="TagSelect" />
 		</panel>
+		
+		<panel title="Description">
+			<field name= "description" colSpan="12" />
+		</panel>
+		
+		<panel-tabs>
+			<panel-related field="tasks" editable="true">
+				<field name="name" />
+				<field name="createDate" />
+				<field name="startDate" />
+				<field name="endDate" />
+				<field name="members" />
+				<field name="priority" />
+			</panel-related>
+			
+			<panel title="Notes">
+				<field name="notes" showTitle="false" colSpan="12" />
+			</panel>
+		</panel-tabs>
+
 	</form>
 
-	<action-attrs name="pjt.show">
-		<attribute name="readonly" for="name" expr="contact == null" />
-	</action-attrs>
+
+
+<!-- 	<action-attrs name="pjt.show"> -->
+<!-- 		<attribute name="readonly" for="name" expr="contact == null" /> -->
+<!-- 	</action-attrs> -->
 
 </object-views>

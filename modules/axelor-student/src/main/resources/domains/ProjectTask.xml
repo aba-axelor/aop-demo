@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.4.xsd">
+ 
+ <module package="com.axelor.student.db" name="student"/>
+ 
+ <entity name="ProjectTask" table="PROJECT_TASK" cachable="true">
+ 	<string name="name" title="Task Summary" required="true"/>
+ 	<string name="notes" multiline="true"/>
+ 	<string name="state" selection="project.task.state.selection"/>
+ 	<integer name="priority" />
+ 	<datetime name="createDate" required="true"/>
+ 	<datetime name="startDate" />
+ 	<datetime name="endDate" />
+ 	<date name="deadLineDate" />
+ 	<integer name="progress" />
+ 	<many-to-one ref="Project" name="project" />
+ 	<many-to-one ref="Contact" name="contact"/>
+ 	 <datetime name="plannedStartDate" />
+ 	<decimal name="plannedDuration" />
+ 	<decimal name="plannedProgress" />
+ 	<integer name="sequence" title="Sequence" />
+ 	<many-to-one ref="ProjectTask" name="parentTask" title="Parent Task" />
+ 	<many-to-many ref="ProjectTask" name="finishToStartTaskSet" title="Tasks to finish before Start" table="PROJECT_TASK_F2S" column="from_task_id" column2="to_task_id"/>
+ 	<many-to-many ref="ProjectTask" name="startToStartTaskSet" title="Tasks to start before Start" table="PROJECT_TASK_S2S" column="from_task_id" column2="to_task_id"/>
+ 	<many-to-many ref="ProjectTask" name="finishToFinishTaskSet" title="Tasks to finish before finish" table="PROJECT_TASK_F2F" column="from_task_id" column2="to_task_id"/>
+ 	<many-to-many ref="ProjectTask" name="startToFinishTaskSet" title="Tasks to start before finish" table="PROJECT_TASK_S2F" column="from_task_id" column2="to_task_id"/>
+ </entity>
+ 	 
+</domain-models>
+
+
+

@@ -25,6 +25,13 @@
 		</node>
 
 	</tree>
+	
+	<grid model="com.axelor.student.db.Address" title="Address" name="address-grid">
+		<field name="street" />
+		<field name="city" />
+		<field name="state" />
+		<field name="country" />
+	</grid>
 
 
 
